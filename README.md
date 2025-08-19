@@ -1,49 +1,49 @@
-# Amazon Verified Permissions Pet Store Sample
+# Amazon Verified Permissions ペットストア サンプル
 
-**Warning: This sample is designed for demonstration purposes, not for production use.**
+**注意: このサンプルはデモ目的で設計されており、本番環境での使用を想定していません。**
 
-This project demonstrates how to integrate Amazon Verified Permissions with a Node.js Express application using Amazon Cognito for authentication. It provides a complete working example of a pet store application with two versions:
+このプロジェクトは、Amazon Cognito による認証を使用する Node.js/Express アプリケーションに Amazon Verified Permissions を統合する方法を示します。ペットストアの完全な動作例を、以下の2つのバージョンで提供します。
 
-1. **Start Version**: A baseline application without authorization controls
-2. **Finish Version**: The same application with authorization provided by integrating the appplication with Verified Permissions by using the Cedar and Verified Permissions packages for Express: `@verifiedpermissions/authorization-clients` and `@cedar-policy/authorization-for-expressjs`
+1. **Start 版**: 認可制御を含まないベースラインのアプリケーション
+2. **Finish 版**: Cedar と Verified Permissions の Express 向けパッケージ（`@verifiedpermissions/authorization-clients` および `@cedar-policy/authorization-for-expressjs`）を用いて Verified Permissions を統合し、認可を実装したアプリケーション
 
-## Project Structure
+## プロジェクト構成
 
 ```
 AVPPetStoreCognitoSample/
-├── start/                  # Baseline application without AVP integration
-│   ├── backend/            # Express.js API backend
-│   ├── frontend/           # Web frontend application
-│   └── scripts/            # Utility scripts for setup and deployment
+├── start/                  # AVP 未統合のベースライン アプリケーション
+│   ├── backend/            # Express.js API バックエンド
+│   ├── frontend/           # Web フロントエンド アプリケーション
+│   └── scripts/            # セットアップ/デプロイ用ユーティリティ スクリプト
 │
-├── finish/                 # Complete application with AVP integration
-│   ├── backend/            # Express.js API with AVP authorization
-│   ├── frontend/           # Web frontend application
-│   └── scripts/            # Utility scripts for setup and deployment
+├── finish/                 # AVP を統合した完成版アプリケーション
+│   ├── backend/            # AVP 認可を備えた Express.js API
+│   ├── frontend/           # Web フロントエンド アプリケーション
+│   └── scripts/            # セットアップ/デプロイ用ユーティリティ スクリプト
 ```
 
-## Getting Started
+## はじめに
 
-Each application version (start and finish) contains its own README with specific setup instructions. The general workflow is:
+各バージョン（start / finish）には、それぞれ固有のセットアップ手順を記した README が含まれています。一般的な手順は次のとおりです。
 
-1. Set up required AWS resources (Cognito, DynamoDB, AVP)
-2. Configure environment variables (if changing from defaults)
-3. Install dependencies
-4. Run the application
+1. 必要な AWS リソースの作成（Cognito、DynamoDB、AVP）
+2. 環境変数の設定（必要に応じてデフォルトから変更）
+3. 依存関係のインストール
+4. アプリケーションの実行
 
-## Prerequisites
+## 前提条件
 
-- Node.js 16 or later
-- npm 7 or later
-- AWS account with permissions to create:
-  - Cognito User Pools
-  - DynamoDB Tables
-  - Verified Permissions Policy Stores
-- AWS CLI configured locally
+- Node.js 16 以上
+- npm 7 以上
+- 次のリソースを作成できる権限を持つ AWS アカウント
+  - Cognito ユーザープール
+  - DynamoDB テーブル
+  - Verified Permissions ポリシーストア
+- ローカル環境で設定済みの AWS CLI
 
-## Additional Resources
+## 参考資料
 
-- [Amazon Verified Permissions Documentation](https://docs.aws.amazon.com/verified-permissions/)
+- [Amazon Verified Permissions ドキュメント](https://docs.aws.amazon.com/verified-permissions/)
 - [Cedar](https://docs.cedarpolicy.com/)
-- [Amazon Cognito Documentation](https://docs.aws.amazon.com/cognito/)
-- [Express.js Documentation](https://expressjs.com/)
+- [Amazon Cognito ドキュメント](https://docs.aws.amazon.com/cognito/)
+- [Express.js ドキュメント](https://expressjs.com/)

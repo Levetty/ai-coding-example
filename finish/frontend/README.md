@@ -1,29 +1,29 @@
-# Frontend Application
+# フロントエンド アプリケーション
 
-This React application provides the user interface for the Pet Store sample. 
+この React アプリケーションは、ペットストア サンプル向けのユーザーインターフェースを提供します。
 
-## Getting started
+## はじめに
 
-### Prerequisites
-- Node.js 16 or later
-- npm 7 or later
-- Backend API running on `http://localhost:3000`
+### 前提条件
+- Node.js 16 以上
+- npm 7 以上
+- `http://localhost:3000` で動作しているバックエンド API
 
-### Available npm scripts
+### 利用可能な npm スクリプト
 
 ```bash
-# Start development server with hot reload
+# ホットリロード付き開発サーバーを起動
 npm start
 
-# Build
+# ビルド
 npm run build
 
-# Run type checking
+# 型チェックを実行
 npm run type-check
 
-# Run linting
+# リンティングを実行
 npm run lint
 ```
 
-### Environment configuration
-The frontend automatically detects the backend API at `http://localhost:3000`. For different configurations, update the API base URL in the application configuration.
+### 環境設定
+フロントエンドは `http://localhost:3000` のバックエンド API を自動検出します。異なる設定が必要な場合は、アプリケーション設定内の API ベース URL を更新してください。
