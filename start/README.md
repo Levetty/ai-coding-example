@@ -1,71 +1,71 @@
-# Pet Store Sample Application
+# ペットストア サンプルアプリケーション
 
-This is a sample application with a React frontend and Express.js backend.
+これは React フロントエンドと Express.js バックエンドで構成されたサンプルアプリケーションです。
 
-## Project Structure
+## プロジェクト構成
 
-The `start` project is organized into three main directories:
+`start` プロジェクトは次の3つのディレクトリで構成されています。
 
 ```
 start/
-├── backend/       # Express.js API server
-├── frontend/      # React web application
-└── scripts/       # Utility scripts for development and deployment
+├── backend/       # Express.js の API サーバー
+├── frontend/      # React の Web アプリケーション
+└── scripts/       # 開発・デプロイ用のユーティリティスクリプト
 ```
 
-## Backend
+## バックエンド
 
-The backend is an Express.js application that provides a RESTful API for managing pets with the following endpoints:
+バックエンドは、ペットの管理用 RESTful API を提供する Express.js アプリケーションです。エンドポイントは次のとおりです。
 
-- `GET /health` - Service health check
-- `GET /api/pets` - List all pets
-- `GET /api/pets/:id` - Get pet details
-- `POST /api/pets` - Create new pet
-- `PUT /api/pets/:id` - Update pet
-- `DELETE /api/pets/:id` - Delete pet
+- `GET /health` - サービスのヘルスチェック
+- `GET /api/pets` - すべてのペット一覧
+- `GET /api/pets/:id` - ペット詳細の取得
+- `POST /api/pets` - ペットの作成
+- `PUT /api/pets/:id` - ペットの更新
+- `DELETE /api/pets/:id` - ペットの削除
 
-## Frontend
+## フロントエンド
 
-The frontend is a React application with the following pages:
+フロントエンドは次のページを含む React アプリケーションです。
 
-- **Dashboard** - Overview of pets
-- **Pet List** - View and manage pets
-- **Pet Details** - View and edit pet information
-- **Create Pet** - Add new pets
+- **Dashboard** - ペットの概要
+- **Pet List** - ペットの一覧・管理
+- **Pet Details** - ペット情報の閲覧・編集
+- **Create Pet** - 新規ペットの追加
 
-## Scripts
+## スクリプト群
 
-The `scripts` directory contains utility scripts for development, deployment, and infrastructure management:
+`scripts` ディレクトリには、開発、デプロイ、インフラ構築向けのユーティリティスクリプトが含まれます。
 
-- `run-backend-dev.sh` - Start the backend in development mode
-- `run-frontend-dev.sh` - Start the frontend in development mode
-- `setup-infrastructure.sh` - Set up required AWS infrastructure
-- `prepare-cedar-schema.sh` - Update Cedar schema formatting to be used by the AWS CLI
-- `convert_cedar_policies.sh` - Update Cedar policy formatting to be used by the AWS CLI
+- `run-backend-dev.sh` - バックエンドを開発モードで起動
+- `run-frontend-dev.sh` - フロントエンドを開発モードで起動
+- `setup-infrastructure.sh` - 必要な AWS インフラをセットアップ
+- `prepare-cedar-schema.sh` - AWS CLI で利用する Cedar スキーマ形式へ更新
+- `convert_cedar_policies.sh` - AWS CLI で利用する Cedar ポリシー形式へ更新
 
-## Getting started
+## はじめに
 
-### Prerequisites
+### 前提条件
 
-- Node.js 16 or later
-- npm 7 or later
-- AWS account with permissions to create:
-  - Cognito User Pools
-  - DynamoDB Tables
-  - Verified Permissions Policy Stores
-- AWS CLI configured locally
+- Node.js 16 以上
+- npm 7 以上
+- 次のリソースを作成できる権限を持つ AWS アカウント
+  - Cognito ユーザープール
+  - DynamoDB テーブル
+  - Verified Permissions ポリシーストア
+- ローカルに設定済みの AWS CLI
 
-### First time setup
-The first time running the application follow these steps.
+### 初回セットアップ
+アプリケーションを初めて実行する際は、以下の手順に従ってください。
 
-1. **Setup the infrastructure**
-This will create a Cognito user pool and DynamoDB table in your configured AWS account.
+1. **インフラのセットアップ**
+設定済みの AWS アカウントに Cognito ユーザープールと DynamoDB テーブルを作成します。
     ```bash
     cd scripts
     ./setup-infrastructure.sh
     ```
-2. **Run the application**
-This will install dependencies and setup basic environment configuration. In two seperate terminals:
+2. **アプリケーションの起動**
+依存関係のインストールと基本的な環境設定を行います。次を 2 つのターミナルで実行します。
     ```bash
     cd scripts
     ./run-backend-dev.sh
@@ -75,16 +75,16 @@ This will install dependencies and setup basic environment configuration. In two
     ./run-frontend-dev.sh
     ```
 
-3. **Access the application:**
-   - Frontend: http://localhost:3001
-   - Backend API: http://localhost:3000
+3. **アクセス方法:**
+   - フロントエンド: http://localhost:3001
+   - バックエンド API: http://localhost:3000
 
 
-### Development workflow
-To run the application after the intial setup you can follow these steps:
+### 開発ワークフロー
+初期セットアップ後にアプリケーションを起動する手順は次のとおりです。
 
-1. **Run the application**
-In seperate terminals:
+1. **アプリケーションを起動**
+別々のターミナルで実行します。
    ```bash
    cd backend
    npm run dev
@@ -93,6 +93,6 @@ In seperate terminals:
    cd frontend
    npm start
    ```
-2. **Access the application**
-   - Frontend: http://localhost:3001
-   - Backend API: http://localhost:3000
+2. **アクセス方法**
+   - フロントエンド: http://localhost:3001
+   - バックエンド API: http://localhost:3000

@@ -1,56 +1,56 @@
-# Backend API
+# バックエンド API
 
-This Express.js backend provides a simple API for a pet store application. The `finish` version implements authorization using the Cedar and Verified Permissions packages for Express: `@verifiedpermissions/authorization-clients` and `@cedar-policy/authorization-for-expressjs`
+この Express.js バックエンドは、ペットストアアプリケーション向けのシンプルな API を提供します。`finish` バージョンでは、Express 向けの Cedar と Verified Permissions パッケージ（`@verifiedpermissions/authorization-clients` および `@cedar-policy/authorization-for-expressjs`）を使用して認可機能を実装しています。
 
-## Directory structure
+## ディレクトリ構成
 
 ```
 src/
-├── app.ts              # Express application setup with middleware and routes
-├── index.ts            # Single entry point for development and production
-├── types.ts            # TypeScript type definitions
-├── config/             # Configuration management
-├── middleware/         # Middleware implementations
-├── routes/             # API route handlers
-├── controllers/        # Business logic controllers
-└── utils/              # Utility functions and logging
+├── app.ts              # ミドルウェアとルートを含む Express アプリケーションのセットアップ
+├── index.ts            # 開発・本番環境共通の単一エントリーポイント
+├── types.ts            # TypeScript 型定義
+├── config/             # 設定管理
+├── middleware/         # ミドルウェア実装
+├── routes/             # API ルートハンドラー
+├── controllers/        # ビジネスロジック コントローラー
+└── utils/              # ユーティリティ関数とログ機能
 ```
 
-## Configuration
+## 設定
 
-The application uses environment variables for configuration:
+アプリケーションは環境変数を使用して設定を行います。
 
 ```bash
-# Server configuration
+# サーバー設定
 PORT=
 NODE_ENV=
-# AWS configuration
+# AWS 設定
 AWS_REGION=
-# DynamoDB configuration
+# DynamoDB 設定
 DYNAMODB_PETS_TABLE=
 ```
 
-## API endpoints
+## API エンドポイント
 
-- `GET /health` - Returns service health and configuration details
-- `GET /api/pets` - List all pets
-- `GET /api/pets/:id` - Get specific pet details
-- `POST /api/pets` - Create new pet
-- `PUT /api/pets/:id` - Update existing pet
-- `DELETE /api/pets/:id` - Delete pet
+- `GET /health` - サービスのヘルスチェックと設定詳細を返す
+- `GET /api/pets` - すべてのペット一覧
+- `GET /api/pets/:id` - 特定のペット詳細を取得
+- `POST /api/pets` - 新規ペットを作成
+- `PUT /api/pets/:id` - 既存のペットを更新
+- `DELETE /api/pets/:id` - ペットを削除
 
 
-## Development commands
+## 開発用コマンド
 
 ```bash
-# Development with hot reload
+# ホットリロード付き開発モード
 npm run dev
-# Type checking
+# 型チェック
 npm run type-check
-# Linting
+# リンティング
 npm run lint
-# Build
+# ビルド
 npm run build
-# Start build
+# ビルド版を起動
 npm start
 ```
