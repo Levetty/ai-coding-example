@@ -1,37 +1,50 @@
-# Amazon Verified Permissions ペットストア サンプル
+# ペットストア サンプルアプリケーション
 
-**注意: このサンプルはデモ目的で設計されており、本番環境での使用を想定していません。**
-
-このプロジェクトは、Amazon Cognito による認証を使用する Node.js/Express アプリケーションに Amazon Verified Permissions を統合する方法を示します。ペットストアの完全な動作例を、以下の2つのバージョンで提供します。
-
-1. **Start 版**: 認可制御を含まないベースラインのアプリケーション
-2. **Finish 版**: Cedar と Verified Permissions の Express 向けパッケージ（`@verifiedpermissions/authorization-clients` および `@cedar-policy/authorization-for-expressjs`）を用いて Verified Permissions を統合し、認可を実装したアプリケーション
+これは React フロントエンドと Express.js バックエンドで構成されたサンプルアプリケーションです。Amazon Verified Permissions を統合するための追加コード、Cedar スキーマ、Cedar ポリシーが含まれています。
 
 ## プロジェクト構成
 
+`finish` プロジェクトは次の3つのディレクトリで構成されています。
+
 ```
-AVPPetStoreCognitoSample/
-├── start/                  # AVP 未統合のベースライン アプリケーション
-│   ├── backend/            # Express.js API バックエンド
-│   ├── frontend/           # Web フロントエンド アプリケーション
-│   └── scripts/            # セットアップ/デプロイ用ユーティリティ スクリプト
-│
-├── finish/                 # AVP を統合した完成版アプリケーション
-│   ├── backend/            # AVP 認可を備えた Express.js API
-│   ├── frontend/           # Web フロントエンド アプリケーション
-│   └── scripts/            # セットアップ/デプロイ用ユーティリティ スクリプト
+backend/       # Express.js の API サーバー
+frontend/      # React の Web アプリケーション
+scripts/       # 開発・デプロイ用のユーティリティスクリプト
 ```
+
+## バックエンド
+
+バックエンドは、ペットの管理用 RESTful API を提供する Express.js アプリケーションです。エンドポイントは次のとおりです。
+
+- `GET /health` - サービスのヘルスチェック
+- `GET /api/pets` - すべてのペット一覧
+- `GET /api/pets/:id` - ペット詳細の取得
+- `POST /api/pets` - ペットの作成
+- `PUT /api/pets/:id` - ペットの更新
+- `DELETE /api/pets/:id` - ペットの削除
+
+## フロントエンド
+
+フロントエンドは次のページを含む React アプリケーションです。
+
+- **Dashboard** - ペットの概要
+- **Pet List** - ペットの一覧・管理
+- **Pet Details** - ペット情報の閲覧・編集
+- **Create Pet** - 新規ペットの追加
+
+## スクリプト群
+
+`scripts` ディレクトリには、開発、デプロイ、インフラ構築向けのユーティリティスクリプトが含まれます。
+
+- `run-backend-dev.sh` - バックエンドを開発モードで起動
+- `run-frontend-dev.sh` - フロントエンドを開発モードで起動
+- `setup-infrastructure.sh` - 必要な AWS インフラをセットアップ
+- `prepare-cedar-schema.sh` - AWS CLI で利用する Cedar スキーマ形式へ更新
+- `convert_cedar_policies.sh` - AWS CLI で利用する Cedar ポリシー形式へ更新
 
 ## はじめに
 
-各バージョン（start / finish）には、それぞれ固有のセットアップ手順を記した README が含まれています。一般的な手順は次のとおりです。
-
-1. 必要な AWS リソースの作成（Cognito、DynamoDB、AVP）
-2. 環境変数の設定（必要に応じてデフォルトから変更）
-3. 依存関係のインストール
-4. アプリケーションの実行
-
-## 前提条件
+### 前提条件
 
 - Node.js 16 以上
 - npm 7 以上
@@ -41,9 +54,44 @@ AVPPetStoreCognitoSample/
   - Verified Permissions ポリシーストア
 - ローカル環境で設定済みの AWS CLI
 
-## 参考資料
+### 初回セットアップ
+アプリケーションを初めて実行する際は、以下の手順に従ってください。
 
-- [Amazon Verified Permissions ドキュメント](https://docs.aws.amazon.com/verified-permissions/)
-- [Cedar](https://docs.cedarpolicy.com/)
-- [Amazon Cognito ドキュメント](https://docs.aws.amazon.com/cognito/)
-- [Express.js ドキュメント](https://expressjs.com/)
+1. **インフラのセットアップ**
+設定済みの AWS アカウントに Cognito ユーザープールと DynamoDB テーブルを作成します。
+    ```bash
+    cd scripts
+    ./setup-infrastructure.sh
+    ```
+2. **アプリケーションの起動**
+依存関係のインストールと基本的な環境設定を行います。次を 2 つのターミナルで実行します。
+    ```bash
+    cd scripts
+    ./run-backend-dev.sh
+    ```
+    ```bash
+    cd scripts
+    ./run-frontend-dev.sh
+    ```
+
+3. **アクセス方法:**
+   - フロントエンド: http://localhost:3001
+   - バックエンド API: http://localhost:3000
+
+
+### 開発ワークフロー
+初期セットアップ後にアプリケーションを起動する手順は次のとおりです。
+
+1. **アプリケーションを起動**
+別々のターミナルで実行します。
+   ```bash
+   cd backend
+   npm run dev
+   ```
+   ```bash
+   cd frontend
+   npm start
+   ```
+2. **アクセス方法**
+   - フロントエンド: http://localhost:3001
+   - バックエンド API: http://localhost:3000
