@@ -1,7 +1,7 @@
 import { Pet } from '../types/pet';
-import { useApiAuth } from '../hooks/useApiAuth';
+import { useApiAuth } from './useApiAuth';
 import { useState, useCallback } from 'react';
-import { useConfig } from '../hooks/useConfig';
+import { useConfig } from './useConfig';
 import { getConfig } from '../config';
 
 // API resource paths
